@@ -1,8 +1,6 @@
 const slowdown = (proximity) => {
     const speed = proximity / 200.0;
-    let n = !Number.isFinite(speed) || speed < 0 ? 0 : speed;
-    console.log(`proximity: ${proximity}  speed: ${speed}`);
-    return n;
+    return !Number.isFinite(speed) || speed < 0 ? 0 : speed;
 };
 
 const speedup = (proximity) => {
@@ -11,11 +9,10 @@ const speedup = (proximity) => {
 };
 
 const videos = [
-    {src: 'video/video4.mp4', f: slowdown},
     {src: 'video/video3.mp4', f: slowdown},
-    {src: 'video/video1.mp4', f: speedup},
-    {src: 'video/video2.mp4', f: speedup}
-    ];
+    {src: 'video/video2.mp4', f: speedup},
+    {src: 'video/video1.mp4', f: speedup}
+];
 
 window.onload = () => {
     const socket = io('http://localhost:3000');
@@ -39,8 +36,6 @@ window.onload = () => {
 
     socket.on('ping', (data) => {
         const cm = data.cm < 20 ? 20 : data.cm;
-        const speed = videos[i].f(cm);
-        console.log(speed);
-        video.playbackRate = speed;
+        video.playbackRate = videos[i].f(cm);
     });
 };
