@@ -15,7 +15,8 @@ window.onload = () => {
     video.addEventListener('ended', () => { video.play(); }, true);
 
     socket.on('ping', (data) => {
-        const speed = speedup(data.cm);
+        const cm = data.cm < 20 ? 20 : data.cm;
+        const speed = speedup(cm);
         video.playbackRate = speed;
     });
 };
