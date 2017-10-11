@@ -6,7 +6,7 @@
 
 ### Running
 
-* Flash arduino uno with 
+* Flash arduino uno with [pingfirmata](http://johnny-five.io/api/proximity/#pingfirmata)
 * Plug HC-SR04 into pin 7
 
 ```
