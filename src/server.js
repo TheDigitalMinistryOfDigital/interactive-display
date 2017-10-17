@@ -20,20 +20,40 @@ app.use(express['static'](__dirname + '/../public'));
 app.use(express['static'](__dirname + '/../dist/public'));
 app.set('view engine', 'pug');
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.render('index', { title: 'Hey' })
 });
 
 board.on('ready', () => {
     io.on('connection', (socket) => {
         const proximity = new five.Proximity({
-            controller: 'HCSR04',
+            controller: 'SRF05',
             pin: 7
         });
 
+        const proximity2 = new five.Proximity({
+            controller: 'SRF05',
+            pin: 8
+        });
+
+        const proximity3 = new five.Proximity({
+            controller: 'SRF05',
+            pin: 4
+        });
+
         proximity.on('data', (e) => {
-            socket.emit('ping', { cm: e.cm });
-            console.log(e);
+            socket.emit('ping1', { cm: e.cm });
+            console.log('FIRST ---->' + e.cm);
+        });
+
+        proximity2.on('data', (e) => {
+            socket.emit('ping2', { cm: e.cm });
+            console.log('SECOND ---->' + e.cm);
+        });
+
+        proximity3.on('data', (e) => {
+            socket.emit('ping3', { cm: e.cm });
+            console.log('THIRD ---->' + e.cm);
         });
 
         proximity.on('change', () => {

@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/natyoung/hsdjklafh.git"
+    "url": "git+https://github.com/TheDigitalMinistryOfDigital/interactive-display.git"
   },
   "author": "Nat Young",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/natyoung/hsdjklafh/issues"
+    "url": "https://github.com/TheDigitalMinistryOfDigital/interactive-display/issues"
   },
-  "homepage": "https://github.com/natyoung/hsdjklafh#readme"
+  "homepage": "https://github.com/TheDigitalMinistryOfDigital/interactive-display#readme"
 }
